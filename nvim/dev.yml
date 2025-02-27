@@ -1,0 +1,86 @@
+- name: Install NeoVIM
+  hosts: localhost
+  tasks:
+  - name: Install APT Packages
+    become: true
+    apt:
+      cache_valid_time: 604800
+      state: latest
+      name:
+        - fzf
+        - nodejs
+        - zsh
+        - build-essential
+        - npm
+        - latexmk
+        - ripgrep
+
+  - name: Oh-My-Zsh
+    git:
+      repo: https://github.com/ohmyzsh/ohmyzsh.git
+      dest: ~/.oh-my-zsh
+      version: master
+
+  - name: Use ZSH as a default shell
+    become: true
+    command: chsh --shell /usr/bin/zsh john
+
+  - name: ZSH Automatic Suggestions Plugin
+    git:
+      repo: https://github.com/zsh-users/zsh-autosuggestions
+      dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+  - name: ZSH Syntax Highlighting Plugin
+    git:
+      repo: https://github.com/zsh-users/zsh-syntax-highlighting
+      dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+  - name: Get Dotfiles
+    uri:
+      url: https://raw.githubusercontent.com/jbrhm/NVIM-Config/main/.zshrc
+      dest: ~/./
+
+  - name: Create fonts directory
+    file:
+      path: ~/.local/share/fonts/
+      state: directory
+      mode: '0755'
+
+  - name: Get JetBrainsMono
+    uri:
+      url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
+      dest: ~/.local/share/fonts/JetBrainsMono.zip
+
+  - name: Unzip JetBrainsMono
+    unarchive:
+      src: ~/.local/share/fonts/JetBrainsMono.zip
+      dest: ~/.local/share/fonts/
+
+  - name: Remove JetBrainsMono zip
+    file:
+      path: ~/.local/share/fonts/JetBrainsMono.zip
+      state: absent
+
+  - name: Update Font Cache
+    shell:
+      cmd: fc-cache -fv
+
+  - name: Get NeoVIM dotfiles
+    git:
+      repo: git@github.com:jbrhm/NVIM-Config.git
+      accept_hostkey: true
+      dest: ~/.config/NVIM-Config
+      version: main
+  
+  - name: Create nvim symlink
+    file:
+      src: ~/.config/NVIM-Config
+      dest: ~/.config/nvim
+      state: link
+
+  - name: Install NeoVIM
+    become: true
+    community.general.snap:
+      classic: true
+      name:
+        - nvim
