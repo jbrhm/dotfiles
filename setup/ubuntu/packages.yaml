@@ -10,4 +10,5 @@
         - nodejs
         - npm
         - unzip
+        - stow
       state: latest

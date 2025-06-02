@@ -15,3 +15,8 @@ sudo -v
 
 # run ansible script to install config dependencies
 ansible-playbook $1/packages.yaml
+
+pushd ..
+
+# get nvim
+stow nvim
