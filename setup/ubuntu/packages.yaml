@@ -3,7 +3,7 @@
   hosts: localhost
 
   tasks:
-  - name: Install NPM
+  - name: Install APT Packages
     become: true
     ansible.builtin.apt:
       name:
@@ -11,4 +11,17 @@
         - npm
         - unzip
         - stow
+        - tmux
+        - terminator
       state: latest
+
+  - name: Install Snap Packages
+    become: true
+    community.general.snap:
+      name: nvim
+      classic: true
+
+  - name: Install TPM
+    ansible.builtin.git:
+      repo: 'https://github.com/tmux-plugins/tpm'
+      dest: '~/.tmux/plugins/tpm'

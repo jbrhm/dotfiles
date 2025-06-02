@@ -20,3 +20,12 @@ pushd ..
 
 # get nvim
 stow nvim
+
+# get tmux
+stow tmux
+
+# install tmux packages
+echo "When opening tmux next press Ctrl + b follwed by Shift + I to install tmux packages"
+
+# get terminator
+stow terminator
