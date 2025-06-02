@@ -9,10 +9,5 @@
       name:
         - nodejs
         - npm
+        - unzip
       state: latest
-
-  - name: Install Pyright.
-    become: true
-    community.general.npm:
-      name: pyright
-      global: true
