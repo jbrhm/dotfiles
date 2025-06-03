@@ -14,3 +14,7 @@ vim.cmd [[
 	  imap <C-K> <c-o>:py3f /home/john/.config/NVIM-Config/clang-format.py<cr>
 	endif
 ]]
+
+vim.cmd [[
+    nnoremap <Leader>c :let @+=expand('%:p')<CR>
+]]
