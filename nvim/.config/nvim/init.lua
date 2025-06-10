@@ -18,3 +18,13 @@ vim.cmd [[
 vim.cmd [[
     nnoremap <Leader>c :let @+=expand('%:p')<CR>
 ]]
+
+-- disable supression of floating virtual text
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  float = {
+    border = "rounded",
+    source = "always",
+  },
+})
