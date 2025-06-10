@@ -2,16 +2,26 @@
 
 set -euox pipefail
 
+if [[ "$#" -ne 1 || ("$1" != "ubuntu") ]]; then
+    echo "Usage: ./setup.sh <ubuntu>"
+    exit 1
+fi
+
 echo "Running dotfiles setup for $1"
+
+# get sudo permissions for apt installations
+sudo -v
 
 if ! command -v ansible --version >/dev/null 2>&1
 then
     echo "ansible could not be found"
-    exit 1
+    if [ "$1" == "ubuntu" ]; then
+	sudo apt install ansible -y
+    else
+        exit 1
+    fi
 fi
 
-# get sudo permissions for apt installations
-sudo -v
 
 # run ansible script to install config dependencies
 ansible-playbook $1/packages.yaml
