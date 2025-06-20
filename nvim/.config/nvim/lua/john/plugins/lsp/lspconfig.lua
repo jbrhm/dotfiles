@@ -28,7 +28,7 @@ return {
     end
 	
 	-- This is where the flags are passed to clangd --header-insertion=never disables auto import :)))
-	lspconfig["clangd"].setup({cmd = { "clangd", "--background-index", "--completion-style=detailed", "--header-insertion=never", "--cland-tidy", "--clang-tidy-checks=*", "--inlay-hints=true"}})
+	lspconfig["clangd"].setup({cmd = { "clangd", "--background-index", "--completion-style=detailed", "--header-insertion=never", "--clang-tidy", "--clang-tidy-checks=*", "--inlay-hints=true"}})
 
 	-- Python language server
 	lspconfig["pyright"].setup({})
