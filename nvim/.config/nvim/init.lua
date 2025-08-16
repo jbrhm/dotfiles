@@ -19,6 +19,10 @@ vim.cmd [[
     nnoremap <Leader>c :let @+=expand('%:p')<CR>
 ]]
 
+vim.cmd [[
+    source ~/.config/nvim/version482.vim
+]]
+
 -- disable supression of floating virtual text
 vim.diagnostic.config({
   virtual_text = true,
