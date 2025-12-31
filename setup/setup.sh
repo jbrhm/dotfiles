@@ -39,3 +39,6 @@ echo "When opening tmux next press Ctrl + b follwed by Shift + I to install tmux
 
 # get terminator
 stow terminator
+
+# get i3
+stow i3
