@@ -15,16 +15,19 @@ sudo -v
 if ! command -v ansible --version >/dev/null 2>&1
 then
     echo "ansible could not be found"
-    if [ "$1" == "ubuntu" ]; then
-	sudo apt install git ansible -y
+    if [ "$1" == "ubuntu-install" ]; then
+        sudo apt install git ansible -y
+
+        git clone git@github.com:jbrhm/dotfiles.git
+
+        pushd dotfiles/setup
+    elif [ "$1" == "ubuntu" ]; then
+        sudo apt install ansible -y
     else
         exit 1
     fi
 fi
 
-git clone git@github.com:jbrhm/dotfiles.git
-
-pushd dotfiles/setup
 
 # run ansible script to install config dependencies
 ansible-playbook $1/packages.yaml
@@ -45,3 +48,8 @@ stow terminator
 
 # get i3
 stow i3
+
+# install nerd font
+wget -O ~/Downloads/jetbrains.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+unzip ~/Downloads/jetbrains.zip -d ~/.fonts
+fc-cache -fv
