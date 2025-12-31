@@ -16,12 +16,15 @@ if ! command -v ansible --version >/dev/null 2>&1
 then
     echo "ansible could not be found"
     if [ "$1" == "ubuntu" ]; then
-	sudo apt install ansible -y
+	sudo apt install git ansible -y
     else
         exit 1
     fi
 fi
 
+git clone git@github.com:jbrhm/dotfiles.git
+
+pushd dotfiles
 
 # run ansible script to install config dependencies
 ansible-playbook $1/packages.yaml
