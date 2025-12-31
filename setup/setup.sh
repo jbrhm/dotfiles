@@ -24,7 +24,7 @@ fi
 
 git clone git@github.com:jbrhm/dotfiles.git
 
-pushd dotfiles
+pushd dotfiles/setup
 
 # run ansible script to install config dependencies
 ansible-playbook $1/packages.yaml
