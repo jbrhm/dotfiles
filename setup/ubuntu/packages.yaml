@@ -85,3 +85,16 @@
         - gh
         - code
 
+  - name: Synchronize Udev Rules
+    synchronize:
+      src: ../files/rules/
+      dest: /etc/udev/rules.d
+      recursive: true
+
+  - name: Reload Rules
+    become: true
+    command: udevadm control --reload-rules
+
+  - name: Udev Trigger
+    become: true
+    command: udevadm trigger --subsystem-match=tty

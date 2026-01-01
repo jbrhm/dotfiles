@@ -1,0 +1,1 @@
+SUBSYSTEM=="hidraw", ATTRS{product}=="Keychron Q4", MODE="0666"
