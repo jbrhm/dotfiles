@@ -184,3 +184,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# order monitors
+exec xrandr --output DP-4 --auto --right-of HDMI-0

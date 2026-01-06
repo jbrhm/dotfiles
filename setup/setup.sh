@@ -62,7 +62,15 @@ fi
 # run ansible script to install config dependencies
 ansible-playbook $1/packages.yaml
 
-pushd ..
+pushd ~
+
+mkdir -p ~/obsidian
+
+pushd obsidian
+
+git clone git@github.com:jbrhm/Obsidian-Main.git
+
+pushd ~/dotfiles
 
 # get nvim
 stow nvim
