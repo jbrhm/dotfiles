@@ -29,7 +29,8 @@ return {
       ensure_installed = {
         "clangd",
 		"pyright", -- If pyright doesn't seem to be working make sure that the pyproject.toml has the include and execution environments properly set up
-		"cmake"
+		"cmake",
+        "rust-analyzer"
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
