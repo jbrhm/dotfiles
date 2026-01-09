@@ -25,7 +25,9 @@
   - name: Install Snap Packages
     become: true
     community.general.snap:
-      name: nvim
+      name: 
+        - nvim
+        - obsidian
       classic: true
 
   - name: Install TPM
