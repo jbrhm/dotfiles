@@ -20,6 +20,8 @@
         - zsh
         - fzf
         - curl
+        - vlc
+        - flameshot
       state: latest
 
   - name: Install Snap Packages
