@@ -127,3 +127,6 @@ eval "$(register-python-argcomplete3 colcon)"
 
 # ros domain id
 export ROS_DOMAIN_ID=5
+
+# set the editor to be vim
+export EDITOR=vim

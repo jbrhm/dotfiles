@@ -6,9 +6,6 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
-    -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
-
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -28,16 +25,16 @@ return {
     end
 	
 	-- This is where the flags are passed to clangd --header-insertion=never disables auto import :)))
-	lspconfig["clangd"].setup({cmd = { "clangd", "--background-index", "--completion-style=detailed", "--header-insertion=never", "--clang-tidy", "--clang-tidy-checks=*", "--inlay-hints=true"}})
+	vim.lsp.config("clangd", {cmd = { "clangd", "--background-index", "--completion-style=detailed", "--header-insertion=never", "--clang-tidy", "--clang-tidy-checks=*", "--inlay-hints=true"}})
 
 	-- Python language server
-	lspconfig["pyright"].setup({})
+	vim.lsp.config("pyright", {})
 
     -- CMake Language Server
     -- https://github.com/regen100/cmake-language-server
-    lspconfig["cmake"].setup({})
+    vim.lsp.config("cmake", {})
 
 	-- Rust Language Server
-    lspconfig["rust_analyzer"].setup({})
+    vim.lsp.config("rust_analyzer", {})
   end,
 }
