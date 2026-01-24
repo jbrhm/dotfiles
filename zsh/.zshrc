@@ -130,3 +130,7 @@ export ROS_DOMAIN_ID=5
 
 # set the editor to be vim
 export EDITOR=vim
+
+# go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin

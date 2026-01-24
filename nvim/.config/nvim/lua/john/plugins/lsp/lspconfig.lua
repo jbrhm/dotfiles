@@ -36,5 +36,8 @@ return {
 
 	-- Rust Language Server
     vim.lsp.config("rust_analyzer", {})
+
+    -- Go Language Server
+    vim.lsp.config("gopls", {cmd = {"gopls"}, filetypes = {"go", "gomod", "gowork", "gotmpl"}})
   end,
 }
